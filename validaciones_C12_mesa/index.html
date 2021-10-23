@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Sign Up Form</h1>
+        <div class="boxHeader-1">
+            <img src="img/img-perfil.jpg" alt="Foto perfil" />
+            <div class="datosPersonales">
+                <a href="#">Lucas V.</a>
+                <a href="#">Follow</a>
+            </div>
+        </div>
+        <div class="boxHeader-2">
+            <div class="iconos-1">
+                <a class="iconos agregarArchivo" href="#"><i class="fas fa-folder-plus"></i></a>
+                <a class="iconos like" href="#"><i class="fas fa-heart"></i></a>
+            </div>
+            <div class="iconos-2">
+                <a class="iconos share" href="#"><i class="fas fa-share"></i></a>
+                <a class="iconos chat" href="#"><i class="fas fa-comment"></i></a>
+                <a class="iconos infoAdicional" href="#"><i class="fas fa-info-circle"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <body>
+        <main>
+            <div class="container">
+                <div class="containerCreateAccount">
+                    <h2>Create Account</h2>
+                    <div class="iconosLogueo">
+                        <a href="#"><i class="fab fa-google"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                    <h3>or use your email for registration</h3>
+                    <section class="errors">
+                        <ul></ul>
+                    </section>
+                    <form action="signIn.html" method="get">
+                        <input type="text" name="name" id="name" placeholder="Name">
+                        <input type="email" name="email" id="email" placeholder="Email">
+                        <input type="password" name="password" id="password" placeholder="Password">
+                        <label for="terms">
+                            <input type="checkbox" name="terms" id="terms" value="terms">I agree to the Terms and Privacy Policy
+                        </label>
+                        <div class="button">
+                            <input class="btn signUp" type="submit" value="Sign Up">
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="card-img img-form"></div>
+            </div>
+        </main>
+    </body>
+    <footer>
+        <div class="footer-1">
+            <p>Pattern created by freepik - <a href="www.freepik.com">www.freepik.com</a></p>
+        </div>
+        <div class="footer-2">
+            <img src="img/img-perfil.jpg" alt="Foto perfil">
+            <a href="#">Lucas V.</a>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

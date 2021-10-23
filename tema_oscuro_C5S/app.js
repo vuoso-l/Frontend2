@@ -4,11 +4,11 @@ let items = document.querySelectorAll(".item");
 let h2 = document.querySelectorAll("h2");
 let p = document.querySelectorAll("p");
 let cambioTema = document.querySelector("#cambioTema");
+let temaOscuro = document.querySelector(".switch input[type='checkbox']");
 
-temaOscuro = () => {
-    let temaOscuro = document.querySelector(".switch input[type='checkbox']");
-    if (temaOscuro.style.display === "none") {
-        temaOscuro.style.display = "block";
+temaOscuro.addEventListener("click", () => {
+    if (temaOscuro.style.display !== "none") {
+
         cambioTema.classList.toggle("cambiarTextoClaro");
         body.classList.toggle("temaOscuroFondo");
         h1.classList.toggle("temaOscuroH1");
@@ -24,5 +24,6 @@ temaOscuro = () => {
     } else {
         temaOscuro.style.display = "none";
     }
-}
+})
+
 
