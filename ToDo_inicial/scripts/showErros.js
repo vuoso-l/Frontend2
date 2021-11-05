@@ -1,8 +1,3 @@
-const nombre = document.querySelector("#name");
-const apellido = document.querySelector("#lastname");
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
-const repeatPassword = document.querySelector("#repeatPassword");
 const ulName = document.querySelector("#nameError");
 const ulLastname = document.querySelector("#lastnameError");
 const ulEmail = document.querySelector("#emailError");
@@ -15,47 +10,7 @@ let errorEmail = [];
 let errorPass = [];
 let errorRePass = [];
 
-console.log("showErrors");
-
-/* Validaciones */
-
-const nameNotValid = (nombre) => {
-    if (nombre === "" || (nombre && !/[a-z]+$/i.test(nombre.trim()))) {
-        return errorName.push(`El campo es obligatorio y solo puede contener letras`);
-
-    }
-}
-
-const lastnameNotValid = (apellido) => {
-    if (apellido === "" || (apellido && !/[a-z]+$/i.test(apellido.trim()))) {
-        return errorLastname.push(`El campo es obligatorio y solo puede contener letras`);
-
-    }
-}
-
-const emailNotValid = (email) => {
-    if (email === "" || (email && !/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(email))) {
-        return errorEmail.push(`El campo es obligatorio y debe tener formato de email. Por ejemplo: ejemplo@ejemplo.com`);
-
-    }
-}
-
-const passNotValid = (password) => {
-    if (password === "") {
-        return errorPass.push(`El campo es obligatorio y debe tener al menos 8 caracteres`);
-
-    }
-}
-
-const passwordCompare = (passToCompare) => {
-    if (passToCompare !== password.value || passToCompare === "") {
-        return errorRePass.push(`El campo es obligatorio y debe coincidir con la contraseña ingresada`);
-
-    }
-} 
-
-/* Funciones para mostrar errores debajo de los inputs */
-
+/* Funciones para mostrar errores debajo de los inputs ul */
 const showErrorName = () => {
     if (errorName.length > 0) {
         errorName.forEach(error => {
@@ -111,6 +66,3 @@ const showErrorRePass = () => {
         })
     }
 }
-
-
-export {nameNotValid, lastnameNotValid, emailNotValid, passNotValid, passwordCompare, showErrorName, showErrorLastname, showErrorEmail, showErrorPass, showErrorRePass};

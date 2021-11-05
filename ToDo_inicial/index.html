@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="styles/ingreso.css">
 
   <!-- ---------------------- logica aplicada en login ----------------------- -->
-  <script src="/scripts/utils.js"></script>
-
 </head>
 
 <body>
@@ -21,20 +19,21 @@
   </div>
 
   <div class="right">
-    <form>
+    <form class="formLogin">
       <div class="form-header">
         <p>To-Do App</p>
       </div>
       <h1>Ingresar</h1>
 
-
       <label>
         Email:
-        <input id="inputEmail" type="text">
+        <input id="email" type="text">
+        <ul id="emailError"></ul>
       </label>
       <label>
         Contraseña:
-        <input id="inputPassword" type="password">
+        <input id="password" type="password">
+        <ul id="passError"></ul>
       </label>
 
       <button type="submit">Ingresar</button>
@@ -45,6 +44,9 @@
     </div>
   </div>
 
+  <script src="/scripts/validations.js"></script>
+  <script src="/scripts/showErros.js"></script>
+  <script src="/scripts/apiIndex.js"></script>
   <script src="/scripts/index.js"></script>
 </body>
 
