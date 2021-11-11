@@ -20,12 +20,27 @@ const createUserAndRedirectToSignin = () => {
         .then((response) => {
             return response.json();
         })
+        .catch(error => console.error('Error:', error))
         .then((data) => {
             if (data.jwt) {
-                alert("Usuario registrado correctamente");
-                location.href = "./index.html";
+                Swal.fire({
+                    icon: 'success',
+                    title: `Usuario registrado correctamente`,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Continuar a logIn!'
+                })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = "./index.html";
+                        }
+                    })
             } else {
-                alert("Usuario ya registrado!!")
+                Swal.fire({
+                    icon: 'error',
+                    title: `El usuario ya se encuentra registrado!`,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Ok!'
+                });
             }
         })
 }

@@ -121,30 +121,40 @@ onload = () => {
             element.addEventListener("click", (e) => {
                 arrayTareas.forEach(tareaId => {
                     if (e.target.id == tareaId.id) {
-                        if (window.confirm(`¿Estás seguro que la actividad <-${tareaId.description}-> está completa?`)) {
-                            let info = {
-                                description: tareaId.description,
-                                completed: true,
-                            }
-                            let settings = {
-                                method: "PUT",
-                                body: JSON.stringify(info),
-                                headers: {
-                                    "authorization": tokenJWT,
-                                    "Content-type": "application/json; charset=UTF-8",
+                        Swal.fire({
+                            icon: 'question',
+                            title: `¿La actividad <-${tareaId.description}-> está completa?`,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Pasar a tareas completadas!'
+                        })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    let info = {
+                                        description: tareaId.description,
+                                        completed: true,
+                                    }
+                                    let settings = {
+                                        method: "PUT",
+                                        body: JSON.stringify(info),
+                                        headers: {
+                                            "authorization": tokenJWT,
+                                            "Content-type": "application/json; charset=UTF-8",
+                                        }
+                                    }
+                                    let url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${tareaId.id}`;
+                                    fetch(url, settings)
+                                        .then((response) => {
+                                            return response.json();
+                                        })
+                                        .catch(error => console.error('Error:', error))
+                                        .then((data) => {
+                                            console.log(data);
+                                            renderizarTareas();
+                                        })
                                 }
-                            }
-                            let url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${tareaId.id}`;
-                            fetch(url, settings)
-                                .then((response) => {
-                                    return response.json();
-                                })
-                                .catch(error => console.error('Error:', error))
-                                .then((data) => {
-                                    console.log(data);
-                                    renderizarTareas();
-                                })
-                        }
+                            })
                     }
                 })
             })
@@ -157,30 +167,40 @@ onload = () => {
             element.addEventListener("click", (e) => {
                 arrayTareas.forEach(tareaId => {
                     if (e.target.id == tareaId.id) {
-                        if (window.confirm(`¿Estás seguro que la actividad <-${tareaId.description}-> está incompleta?`)) {
-                            let info = {
-                                description: tareaId.description,
-                                completed: false,
-                            }
-                            let settings = {
-                                method: "PUT",
-                                body: JSON.stringify(info),
-                                headers: {
-                                    "authorization": tokenJWT,
-                                    "Content-type": "application/json; charset=UTF-8",
+                        Swal.fire({
+                            icon: 'question',
+                            title: `¿Falta completar la actividad <-${tareaId.description}-> ?`,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Pasar a tareas incompletas!'
+                        })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    let info = {
+                                        description: tareaId.description,
+                                        completed: false,
+                                    }
+                                    let settings = {
+                                        method: "PUT",
+                                        body: JSON.stringify(info),
+                                        headers: {
+                                            "authorization": tokenJWT,
+                                            "Content-type": "application/json; charset=UTF-8",
+                                        }
+                                    }
+                                    let url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${tareaId.id}`;
+                                    fetch(url, settings)
+                                        .then((response) => {
+                                            return response.json();
+                                        })
+                                        .catch(error => console.error('Error:', error))
+                                        .then((data) => {
+                                            console.log(data);
+                                            renderizarTareas();
+                                        })
                                 }
-                            }
-                            let url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${tareaId.id}`;
-                            fetch(url, settings)
-                                .then((response) => {
-                                    return response.json();
-                                })
-                                .catch(error => console.error('Error:', error))
-                                .then((data) => {
-                                    console.log(data);
-                                    renderizarTareas();
-                                })
-                        }
+                            })
                     }
                 })
             })
@@ -192,25 +212,35 @@ onload = () => {
             element.addEventListener("click", (e) => {
                 arrayTareas.forEach(tarea => {
                     if (e.target.id == tarea.id) {
-                        if (window.confirm(`¿Estás seguro que desea eliminar la actividad <-${tarea.description}-> ?`)) {
-                            let settings = {
-                                method: "DELETE",
-                                headers: {
-                                    "authorization": tokenJWT,
-                                    "Content-type": "application/json; charset=UTF-8",
+                        Swal.fire({
+                            icon: 'question',
+                            title: `¿Querés eliminar la actividad <-${tarea.description}-> ?`,
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Eliminar tarea!'
+                        })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    let settings = {
+                                        method: "DELETE",
+                                        headers: {
+                                            "authorization": tokenJWT,
+                                            "Content-type": "application/json; charset=UTF-8",
+                                        }
+                                    }
+                                    let url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${tarea.id}`;
+                                    fetch(url, settings)
+                                        .then((response) => {
+                                            return response.json();
+                                        })
+                                        .catch(error => console.error('Error:', error))
+                                        .then((data) => {
+                                            console.log(data);
+                                            renderizarTareas();
+                                        })
                                 }
-                            }
-                            let url = `https://ctd-todo-api.herokuapp.com/v1/tasks/${tarea.id}`;
-                            fetch(url, settings)
-                                .then((response) => {
-                                    return response.json();
-                                })
-                                .catch(error => console.error('Error:', error))
-                                .then((data) => {
-                                    console.log(data);
-                                    renderizarTareas();
-                                })
-                        }
+                            })
                     }
                 })
             })
@@ -219,10 +249,20 @@ onload = () => {
 
     const closeSesion = () => {
         cerrarSesion.addEventListener("click", () => {
-            if (window.confirm("¿Seguro que quiere cerrar la sesión?")) {
-                localStorage.removeItem("jwt");
-                location.href = "./index.html";
-            }
+            Swal.fire({
+                icon: 'question',
+                title: `¿Querés cerrar la sesión?`,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Cerrar sesión!'
+            })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.removeItem("jwt");
+                        location.href = "./index.html";
+                    }
+                })
         })
     }
 

@@ -22,10 +22,24 @@ const loguinUserAndRedirectToMisTareas = () => {
         .then((data) => {
             if (data.jwt) {
                 localStorage.setItem("jwt", data.jwt)
-                alert("Usuario logueado correctamente");
-                location.href = "./mis-tareas.html";
+                Swal.fire({
+                    icon: 'success',
+                    title: `Usuario logueado correctamente`,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Ingresar!'
+                })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = "./mis-tareas.html";
+                        }
+                    })
             } else {
-                alert("No existe el usuario!!");
+                Swal.fire({
+                    icon: 'error',
+                    title: `El usuario ingresado no existe!`,
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Ok!'
+                });
             }
         })
 }
