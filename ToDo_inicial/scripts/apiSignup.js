@@ -1,3 +1,8 @@
+const nombre = document.querySelector("#name");
+const apellido = document.querySelector("#lastname");
+const email = document.querySelector("#email");
+const password = document.querySelector("#password");
+
 /* Consumiendo la API */
 const apiBaseUrl = "https://ctd-todo-api.herokuapp.com/v1/";
 let apiUsers = "users";
@@ -44,3 +49,5 @@ const createUserAndRedirectToSignin = () => {
             }
         })
 }
+
+export {createUserAndRedirectToSignin};

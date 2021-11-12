@@ -43,3 +43,5 @@ const loguinUserAndRedirectToMisTareas = () => {
             }
         })
 }
+
+export {loguinUserAndRedirectToMisTareas};

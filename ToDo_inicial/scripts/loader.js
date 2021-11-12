@@ -38,3 +38,5 @@ const ocultarSpinner = () => {
 
     return;
 }
+
+export {mostrarSpinner, ocultarSpinner};
